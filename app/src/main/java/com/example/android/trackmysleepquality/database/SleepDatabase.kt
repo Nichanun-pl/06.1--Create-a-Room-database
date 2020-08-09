@@ -20,4 +20,11 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 
 @Database(entities = [SleepNight::class], version = 1, exportSchema = false)
-abstract class SleepDatabase : RoomDatabase() {}
+abstract class SleepDatabase : RoomDatabase() {
+    abstract val sleepDatabaseDao: SleepDatabaseDao
+
+    companion object {
+        @Volatile
+        private var INSTANCE: SleepDatabase? = null
+    }
+}
